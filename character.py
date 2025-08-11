@@ -3,10 +3,7 @@ from typing import List, Dict, Optional
 
 
 class Ability:
-    """
-    Clase base para habilidades.
-    kind: 'single' (1 uso) o 'uses' (x usos).
-    """
+    
     def __init__(self, name: str, kind: str = 'single', uses_left: int = 1, description: str = ""):
         self.name = name
         self.kind = kind
@@ -17,11 +14,11 @@ class Ability:
         return self.uses_left > 0
 
     def execute(self, user: 'Character', target: Optional['Character']):
-        """Sobrescribir en subclases: efecto real de la habilidad."""
+        
         raise NotImplementedError
 
     def use(self, user: 'Character', target: Optional['Character']) -> bool:
-        """Llamar para intentar usar la habilidad. Devuelve True si se usó."""
+       
         if not self.can_use():
             print(f"  La habilidad {self.name} está agotada.")
             return False
